@@ -10,10 +10,13 @@ const MealItemForm = (props) => {
   {
     event.preventDefault()
     // cartCtx.items.push(props.item)
-    const quantity = document.getElementById('amount_' +props.id).value
-    console.log(quantity)
-    cartCtx.addItem({...props.item, quantity: quantity})
-    
+    const quantity = document.getElementById('amount' +props.id).value
+    if(quantity.trim().length === 0 || quantity < 1 || quantity > 5)
+    {
+      return
+    }
+    cartCtx.addItem({...props.item, quantity: Number(quantity)})
+    document.getElementById('amount' +props.id).value = 1 
   }
 
   return (
@@ -21,7 +24,7 @@ const MealItemForm = (props) => {
       <Input 
         label="Amount"
         input = {{
-          id: 'amount_' +props.id,
+          id: 'amount' +props.id,
           type: 'number',
           min: '1',
           max: '5',

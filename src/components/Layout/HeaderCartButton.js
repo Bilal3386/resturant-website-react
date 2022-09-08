@@ -8,9 +8,8 @@ const HeaderCartButton = (props) => {
   
   let quantity = 0;
   cartCtx.items.forEach(item => {
-    quantity= quantity + Number(item.quantity)
+    quantity = quantity + Number(item.quantity)
    })
-
   // const numberOfCartItem = cartCtx.items.reduce((curNumber, item) => {
   //   return curNumber + item.amount
   // }, 0);
@@ -18,7 +17,7 @@ const HeaderCartButton = (props) => {
   return (
     <button className={classes.button} onClick ={props.onClick}>
       <span className={classes.icon}>
-        <CartIcon />
+        <CartIcon/>
       </span>
       <span>{props.children}</span>
       <span className={classes.badge}>{quantity}</span>
